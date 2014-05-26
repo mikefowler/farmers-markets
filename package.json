@@ -3,19 +3,19 @@
   "version": "0.1.0",
   "description": "A (better) implementation of the USDA National Farmers' Market Directory",
   "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "engine": {
+    "node": "0.10.x"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/mikefowler/farmersmarkets.git"
+    "url": "git://github.com/mikefowler/farmers-markets.git"
   },
   "author": "Mike Fowler <mike@mikefowler.me>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mikefowler/farmersmarkets/issues"
+    "url": "https://github.com/mikefowler/farmers-markets/issues"
   },
-  "homepage": "https://github.com/mikefowler/farmersmarkets",
+  "homepage": "https://github.com/mikefowler/farmers-markets",
   "devDependencies": {
     "load-grunt-tasks": "~0.4.0",
     "grunt": "~0.4.5",
