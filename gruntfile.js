@@ -6,13 +6,13 @@ module.exports = function (grunt) {
 
 		watch: {
 			templates: {
-				files: ['app/templates/{,**/}*.hbs'],
+				files: ['app/assets/templates/{,**/}*.hbs'],
 				tasks: ['handlebars']
 			},
 			livereload: {
 				options: { livereload: true },
 				files: [
-					'app/scripts/**/*.js',
+					'app/assets/scripts/**/*.js',
 					'.tmp/scripts/**/*.js'
 				]
 			}
@@ -32,11 +32,11 @@ module.exports = function (grunt) {
 				options: {
 					namespace: 'App.Templates',
 					processName: function (file) {
-						return file.replace('app/templates/', '').replace('.hbs', '');
+						return file.replace('app/assets/templates/', '').replace('.hbs', '');
 					}
 				},
 				files: {
-					'.tmp/scripts/templates.js': ['app/templates/{,**/}*.hbs']
+					'.tmp/scripts/templates.js': ['app/assets/templates/{,**/}*.hbs']
 				}
 			}
 		}
