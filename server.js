@@ -4,6 +4,7 @@
 
 var express = require('express');
 var _ = require('underscore');
+var url = require('url');
 
 require('./lib/underscore-ext');
 require('./lib/error-ext');
@@ -27,7 +28,14 @@ if (environment === 'development') {
 // -----------------------------------------------------------------------------
 
 var redis = require('./db/redis');
-redis.createClient(process.env.REDIS_PORT, process.env.REDIS_HOST);
+
+if (environment === 'production') {
+	var redisURL = url.parse(process.env.REDISCLOUD_URL);
+	var client = redis.createClient(redisURL.port, redisURL.hostname, { no_ready_check: true });
+	client.auth(redisURL.auth.split(":")[1]);
+} else {
+	redis.createClient(process.env.REDIS_PORT, process.env.REDIS_HOST);
+}
 
 // -----------------------------------------------------------------------------
 // Application
