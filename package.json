@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "description": "A (better) implementation of the USDA National Farmers' Market Directory",
   "main": "server.js",
+  "scripts": {
+    "postinstall": "./node_modules/bower/bin/bower install"
+  },
   "engine": {
     "node": "0.10.x"
   },
@@ -29,6 +32,7 @@
     "morgan": "~1.1.1",
     "async": "~0.9.0",
     "underscore": "~1.6.0",
-    "redis": "~0.10.3"
+    "redis": "~0.10.3",
+    "bower": "~1.3.3"
   }
 }
