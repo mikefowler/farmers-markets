@@ -2,7 +2,7 @@
 
 	App.SearchView = Backbone.View.extend({
 
-		template: App.Templates['search'],
+		template: JST['search'],
 
 		className: 'search',
 
@@ -57,7 +57,7 @@
 
 		className: 'search-result',
 
-		template: App.Templates['search-result'],
+		template: JST['search-result'],
 
 		render: function () {
 			this.$el.html(this.template(this.model.toJSON()));

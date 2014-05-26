@@ -19,11 +19,12 @@ function index (req, res, next) {
 	var cacheKey = 'search:' + zip;
 
 	cache.get(cacheKey, function (err, data) {
-  	if (err) { return next(Error.Internal); }
+  	if (err) { return next(new Error.Internal); }
   	if (data) { return res.json(data); }
 
   	USDAService.search(zip, function (err, results) {
-			if (err) { return next(Error.Internal); }
+  		console.log('error from usda', err);
+			if (err) { return next(err); }
 			cache.set(cacheKey, 86400, results); // 60 * 60 * 24 = 86400 seconds
 			return res.json(results);
 		});

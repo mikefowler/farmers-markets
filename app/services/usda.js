@@ -41,23 +41,29 @@ function marketsQuery (term, next) {
 		url: API_HOST + '/zipSearch?zip=' + term,
 		json: true
 	}, function (err, response, body) {
-		if (err) { return next(err); }
+		if (err) { return next(new Error.Internal); }
+		
+		if (body.results && body.results[0].id === 'Error') {
+			return next(new Error.NotFound);
+		}
+
 		next(null, body.results);
 	});
 }
 
 function getMarketDetails (results, next) {
 	async.map(results, function (item, callback) {
+		if (!item.id) { return item; }
 		request({
 			url: API_HOST + '/mktDetail?id=' + item.id,
 			json: true
 		}, function (err, response, body) {
-			if (err) { return next(err); }
+			if (err) { return next(new Error.Internal); }
 			item = _.extend(item, body.marketdetails);
 			callback(null, item);
 		});
 	}, function (err, results) {
-		if (err) { return next(err); }
+		if (err) { return next(new Error.Internal); }
 		 next(null, results);
 	});
 }
