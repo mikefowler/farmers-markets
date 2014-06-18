@@ -8,7 +8,7 @@ var config = require('../../lib/config');
 // Configuration
 // -----------------------------------------------------------------------------
 
-config.set('PORT', 8080);
+config.set('PORT', 4500);
 
 config.set('REDIS_HOST', 'localhost');
 config.set('REDIS_PORT', 6379);

@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="markets">
 <head>
 	<title></title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:800|Gentium+Book+Basic:400,400italic' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" type="text/css" href="/assets/main.css">
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
 </head>
 <body>
 
-	<div id="main"></div>
+	<div ng-view></div>
 
-	<script src="//maps.google.com/maps/api/js?sensor=true"></script>
-	
-	<script src="/assets/vendor.js"></script>
-	<script src="/assets/templates.js"></script>
-	<script src="/assets/application.js"></script>
+  <script src="/bower_components/angular/angular.js"></script>
+  <script src="/bower_components/angular-route/angular-route.js"></script>
+  <script src="/scripts/application.js"></script>
+  <script src="/scripts/controllers.js"></script>
 
 </body>
 </html>
