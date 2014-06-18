@@ -1,18 +1,20 @@
-(function (App, Backbone) {
+import { SearchView } from './views';
 
-	App.Router = Backbone.Router.extend({
+class Router extends Backbone.Router {
 
-		routes: {
+	constructor (options) {
+		this.routes = {
 			'': 'index'
-		},
+		};
+		super(options);
+	}
+		
+	index () {
+		console.debug('@ index');
+		var view = new SearchView();
+		$('#main').html(view.render().$el);
+	}
 
-		index: function () {
-			console.debug('@ index');
+}
 
-			var view = new App.SearchView();
-			App.$el.html(view.render().$el);
-		}
-
-	});
-
-}(window.App = window.App || {}, Backbone));
+export default Router;

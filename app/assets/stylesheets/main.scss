@@ -1,0 +1,59 @@
+@import 'config';
+
+html {
+	height: 100%;
+	background: #B8DD45;
+}
+
+body {
+	@extend %typeface-body;
+	padding: 1em 0;
+}
+
+// ----------------------------------------------------------------------------
+// Search
+// ----------------------------------------------------------------------------
+
+.search {
+	text-align: center;
+	color: white;
+}
+
+.search__heading {
+	@extend %typeface-heading;
+	font-size: 4em;
+	margin: 0.25em 0;
+}
+
+.search__label {
+	@extend %hide;
+}
+
+.search__prefix,
+.search__input {
+	@extend %typeface-body-italic;
+	height: 1em;
+	line-height: 1.2;
+	font-size: 3em;
+}
+
+.search__prefix {
+	@extend %typeface-body-italic;
+	text-transform: lowercase;
+}
+
+.search__input {
+	background: none;
+	color: white;
+	border: none;
+	padding: 0.25em;
+	margin: 0 0.25em;
+	background: rgba(255, 255, 255, 0.15);
+	transition: 0.25s background ease;
+	width: 400px;
+
+	&:focus {
+		outline: none;
+		background: rgba(255, 255, 255, 0.25);
+	}
+}

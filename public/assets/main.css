@@ -1,0 +1,55 @@
+.search__heading {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase; }
+
+.search__prefix,
+.search__input, body {
+  font-family: 'Gentium Book Basic', serif;
+  font-weight: 400; }
+
+.search__prefix,
+.search__input {
+  font-style: italic; }
+
+.search__label {
+  position: absolute;
+  top: -9999px;
+  left: -9999px; }
+
+html {
+  height: 100%;
+  background: #B8DD45; }
+
+body {
+  padding: 1em 0; }
+
+.search {
+  text-align: center;
+  color: white; }
+
+.search__heading {
+  font-size: 4em;
+  margin: 0.25em 0; }
+
+.search__prefix,
+.search__input {
+  height: 1em;
+  line-height: 1.2;
+  font-size: 3em; }
+
+.search__prefix {
+  text-transform: lowercase; }
+
+.search__input {
+  background: none;
+  color: white;
+  border: none;
+  padding: 0.25em;
+  margin: 0 0.25em;
+  background: rgba(255, 255, 255, 0.15);
+  transition: 0.25s background ease;
+  width: 400px; }
+  .search__input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.25); }

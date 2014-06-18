@@ -1,15 +1,17 @@
-(function (App, Backbone) {
+class Market extends Backbone.Model {
 
-	App.Market = Backbone.Model.extend({
+}
 
-	});
+class Markets extends Backbone.Collection {
 
-	App.Markets = Backbone.Collection.extend({
+	constructor (options) {
+		super(options);
+		
+		this.url = 'api/search';
+		this.model = Market;
+		this.comparator = 'distance';
+	}
 
-		url: 'api/search',
+}
 
-		model: App.Market
-
-	});
-
-}(window.App = window.App || {}, Backbone));
+export { Market, Markets }

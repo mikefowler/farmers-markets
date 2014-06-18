@@ -5,7 +5,6 @@
 var express = require('express');
 var _ = require('underscore');
 var url = require('url');
-var mincer = require('mincer');
 
 require('./lib/underscore-ext');
 require('./lib/error-ext');
@@ -39,18 +38,6 @@ if (environment === 'production') {
 }
 
 // -----------------------------------------------------------------------------
-// Asset Pipeline
-// -----------------------------------------------------------------------------
-
-var pipeline = new mincer.Environment();
-pipeline.appendPath('app/assets/javascripts');
-pipeline.appendPath('app/assets/stylesheets');
-pipeline.appendPath('app/assets/templates');
-pipeline.appendPath('vendor/assets/javascripts');
-pipeline.appendPath('vendor/bower_components');
-pipeline.enable('source_maps');
-
-// -----------------------------------------------------------------------------
 // Application
 // -----------------------------------------------------------------------------
 
@@ -72,7 +59,6 @@ app.use(express.static('./public'));
 app.engine('html', require('ejs').renderFile);
 app.set('views', './app/views');
 app.set('view engine', 'html');
-app.use('/assets', mincer.createServer(pipeline));
 
 var controllers = _.requireDir(path.join(__dirname, 'app', 'controllers'));
 

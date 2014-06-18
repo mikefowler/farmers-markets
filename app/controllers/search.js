@@ -23,8 +23,7 @@ function index (req, res, next) {
   	if (data) { return res.json(data); }
 
   	USDAService.search(zip, function (err, results) {
-  		console.log('error from usda', err);
-			if (err) { return next(err); }
+  		if (err) { return next(err); }
 			cache.set(cacheKey, 86400, results); // 60 * 60 * 24 = 86400 seconds
 			return res.json(results);
 		});

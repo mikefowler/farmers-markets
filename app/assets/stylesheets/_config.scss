@@ -1,0 +1,21 @@
+%typeface-heading {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 800;
+	text-transform: uppercase;
+}
+
+%typeface-body {
+	font-family: 'Gentium Book Basic', serif;
+	font-weight: 400;
+}
+
+%typeface-body-italic {
+	@extend %typeface-body;
+	font-style: italic;
+}
+
+%hide {
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+}

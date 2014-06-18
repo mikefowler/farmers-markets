@@ -1,89 +1,97 @@
-(function (App, Backbone) {
+import { Market, Markets } from './entities';
 
-	App.SearchView = Backbone.View.extend({
+class SearchView extends Backbone.View {
 
-		template: JST['search'],
-
-		className: 'search',
-
-		initialize: function () {
-			this.markets = new App.Markets();
-		},
-
-		events: {
+	constructor (options) {
+		this.template = JST['search'];
+		this.className = 'search';
+		this.markets = new Markets();
+		this.events = {
 			'keyup input': 'search'
-		},
+		};
+		super(options);
+	}
 
-		render: function () {
-			this.$el.html(this.template());
-			
-			this.ui = {
-				input: this.$('.js-input'),
-				results: this.$('.js-results')
-			};
+	render () {
+		this.$el.html(this.template());
+		
+		this.ui = {
+			input: this.$('.js-input'),
+			results: this.$('.js-results')
+		};
 
-			return this;
-		},
+		this.resultsView = new SearchResultsView({
+			collection: this.markets
+		});
 
-		search: function () {
-			var zip = this.ui.input.val();
-				
-			if (zip.length !== 5) {
-				return;
-			}
+		this.ui.results.html(this.resultsView.render().$el);
 
-			if (this.resultsView) {
-				this.resultsView.remove();
-			}
+		return this;
+	}
 
-			this.resultsView = new App.SearchResultsView({
-				collection: this.markets
-			});
-
-			this.ui.results.html(this.resultsView.$el);
-
-			this.markets.fetch({
-				data: {
-					zip: zip
-				}
-			});
+	search () {
+		var self = this;
+		var promise;
+		var zip = self.ui.input.val();
+		
+		if (zip.length !== 5) {
+			self.resultsView.$el.css({ opacity: 0.5 });
+			return;
 		}
 
-	});
+		promise = self.markets.fetch({
+			data: {
+				zip: zip
+			},
+			reset: true
+		});
 
-	App.SearchResultView = Backbone.View.extend({
+		promise.then(function () {
+			self.resultsView.$el.css({ opacity: 1 }).show();
+		});
+	}
 
-		tagName: 'li',
+}
 
-		className: 'search-result',
+class SearchResultView extends Backbone.View {
 
-		template: JST['search-result'],
+	constructor (options) {
+		super(options);
 
-		render: function () {
-			this.$el.html(this.template(this.model.toJSON()));
-			return this;
-		}
+		this.tagName = 'li';
+		this.className = 'search-result';
+		this.template = JST['search-result'];
+	}
 
-	});
+	render () {
+		this.$el.html(this.template(this.model.toJSON()));
+		return this;
+	}
 
-	App.SearchResultsView = Backbone.View.extend({
+}
 
-		tagName: 'ul',
+class SearchResultsView extends Backbone.View {
 
-		className: 'search-results',
+	constructor (options) {
+		super(options);
 
-		itemView: App.SearchResultView,
+		this.tagName = 'ul';
+		this.className = 'search-results';
+		this.itemView = SearchResultView;
+		this.listenTo(this.collection, 'reset', this.render);
+	}
 
-		initialize: function () {
-			this.listenTo(this.collection, 'add', this.addItem);
-		},
+	addItem (model) {
+		var itemView = new this.itemView({ model: model });
+		this.$el.append(itemView.render().$el);
+	}
 
-		addItem: function (model) {
-			console.log('adding model', model);
-			var itemView = new this.itemView({ model: model });
-			this.$el.append(itemView.render().$el);
-		}
+	render () {
+		this.$el.empty();
+		this.collection.forEach(this.addItem, this);
+		return this;
+	}
 
-	});
+}
 
-}(window.App = window.App || {}, Backbone));
+export { SearchView, SearchResultView, SearchResultsView }
