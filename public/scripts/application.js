@@ -1,15 +1,21 @@
-'use strict';
+(function () {
 
-var app = angular.module('markets', [
-  'ngRoute',
-  'markets.controllers'
-]);
+  'use strict';
 
-app.config(['$routeProvider', function ($routeProvider) {
+  var app = angular.module('markets', [
+    'ngRoute',
+    'ngResource',
+    'markets.controllers',
+    'markets.resources'
+  ]);
 
-  $routeProvider.when('/', {
-    templateUrl: 'partials/search.html',
-    controller: 'SearchCtrl'
-  });
+  app.config(['$routeProvider', function ($routeProvider) {
 
-}]);
+    $routeProvider.when('/', {
+      templateUrl: 'partials/search.html',
+      controller: 'SearchCtrl'
+    });
+
+  }]);
+
+}());

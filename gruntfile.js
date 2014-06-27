@@ -4,6 +4,12 @@ module.exports = function (grunt) {
 
 	grunt.initConfig({
 
+		nodemon: {
+			dev: {
+				script: 'server.js'
+			}
+		},
+
 		watch: {
 			livereload: {
 				options: { livereload: true },
@@ -29,7 +35,8 @@ module.exports = function (grunt) {
 	});
 
 	grunt.registerTask('test', []);
+	grunt.registerTask('serve', ['nodemon']);
 	grunt.registerTask('build', ['sass']);
-	grunt.registerTask('default', ['build', 'watch']);
+	grunt.registerTask('default', ['build', 'serve', 'watch']);
 
 };
