@@ -6,6 +6,12 @@ Just getting going.
 
 ## Changelog
 
+**07/01/14**
+
+* Been working on this here and there, mostly fooling with UI
+* Switched to Angular because I wanted more experience with it
+* Working on designing basic search + search results
+
 **05/22/14**
 
 * Setup project structure

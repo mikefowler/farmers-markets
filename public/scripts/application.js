@@ -5,6 +5,7 @@
   var app = angular.module('markets', [
     'ngRoute',
     'ngResource',
+    'ngAnimate',
     'markets.controllers',
     'markets.resources'
   ]);

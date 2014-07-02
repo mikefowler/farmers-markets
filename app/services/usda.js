@@ -93,7 +93,7 @@ function mapResults (results, next) {
 
 		// Normalize the item's keys for consistency and sanity
 		_.each(resultMap, function (value, key) {
-			if (item[key]) {
+			if (item.hasOwnProperty(key)) {
 				item[value] = item[key].trim();
 				delete item[key];
 			}

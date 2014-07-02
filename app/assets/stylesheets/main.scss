@@ -1,5 +1,9 @@
 @import 'config';
 
+* {
+	box-sizing: border-box;
+}
+
 html {
 	height: 100%;
 	background: #B8DD45;
@@ -46,7 +50,7 @@ body {
 	background: none;
 	color: white;
 	border: none;
-	padding: 0.25em;
+	padding: 0.75em 0.25em;
 	margin: 0 0.25em;
 	background: rgba(255, 255, 255, 0.15);
 	transition: 0.25s background ease;
@@ -56,4 +60,32 @@ body {
 		outline: none;
 		background: rgba(255, 255, 255, 0.25);
 	}
+}
+
+.search__results {
+	ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+}
+
+.search__result {
+	float: left;
+	width: 25%;
+	padding: 0 1em;
+	transition: 0.5s linear all;
+
+	&.ng-enter {
+		opacity: 0;
+	}
+
+	&.ng-enter.ng-enter-active {
+		opacity: 1;
+	}
+
+	&.ng-leave {
+		opacity: 0;
+	}
+
 }
