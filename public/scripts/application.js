@@ -6,6 +6,7 @@
     'ngRoute',
     'ngResource',
     'ngAnimate',
+    'google-maps',
     'markets.controllers',
     'markets.resources'
   ]);

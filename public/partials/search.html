@@ -1,19 +1,32 @@
-<div class="search">
+<div class="search" ng-class="{ bounce:!!results.length }">
 
-  <h1 class="search__heading">Farmers' Markets</h1>
-
-  <form name="searchForm">
+  <form>
+    <h1 class="search__heading">Farmers' Markets</h1>
     <label class="search__label" for="zipcode">Zip Code</label>
     <span class="search__prefix">in</span>
     <input id="zipcode" type="text" ng-model="zip" class="search__input" autofocus="autofocus" ng-change="search()">
   </form>
 
-  <p ng-show="loading">Searching…</p>
-
-  <div class="search__results">
-    <ul>
-      <li ng-repeat="result in results" class="search__result">{{ result.name }}</li>
-    </ul>
-  </div>
-
 </div>
+
+<div class="search-overlay" ng-hide="!!results.length"></div>
+
+<google-map
+  class="search-map"
+  draggable="true"
+  center="mapOptions.center"
+  zoom="mapOptions.zoom"
+  options="mapOptions.options"
+  >
+
+  <markers fit="true" models="results" coords="'location'"></markers>
+
+  <!-- <circle ng-repeat="c in results"
+    radius="mapOptions.circle.radius"
+    center="c.location"
+    fill="mapOptions.circle.fill"
+    stroke="mapOptions.circle.stroke"
+    >
+  </circle> -->
+
+</google-map>

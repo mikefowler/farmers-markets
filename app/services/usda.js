@@ -105,9 +105,10 @@ function mapResults (results, next) {
 			match = item.map.match(/\?q=([-\d\.]+)%2C%20([-\d\.]+)/);
 			if (match !== -1) {
 				match = match.splice(1);
-				item.location = [];
-				item.location.push(parseFloat(match[0]));
-				item.location.push(parseFloat(match[1]));
+				item.location = {
+					latitude: parseFloat(match[0]),
+					longitude: parseFloat(match[1])
+				};
 			}
 		}
 

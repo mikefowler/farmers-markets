@@ -30,6 +30,15 @@ module.exports = function (grunt) {
 					'public/css/main.css': 'app/assets/stylesheets/main.scss'
 				}
 			}
+		},
+
+		concurrent: {
+			dev: {
+				tasks: ['serve', 'watch'],
+				options: {
+					logConcurrentOutput: true
+				}
+			}
 		}
 
 	});
@@ -37,6 +46,6 @@ module.exports = function (grunt) {
 	grunt.registerTask('test', []);
 	grunt.registerTask('serve', ['nodemon']);
 	grunt.registerTask('build', ['sass']);
-	grunt.registerTask('default', ['build', 'serve', 'watch']);
+	grunt.registerTask('default', ['build', 'concurrent:dev']);
 
 };
