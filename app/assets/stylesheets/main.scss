@@ -45,34 +45,45 @@ body {
 	@extend %hide;
 }
 
-.search__prefix,
-.search__input {
+.search__prefix {
 	@extend %typeface-body-italic;
 	height: 1em;
 	width: 100%;
 	line-height: 1.2;
 	font-size: 3em;
-}
-
-.search__prefix {
-	@extend %typeface-body-italic;
 	text-transform: lowercase;
 }
 
 .search__input {
-	background: none;
-	color: white;
-	border: none;
-	padding: 0.75em 0.25em;
-	margin: 0 0.25em;
-	background: rgba(255, 255, 255, 0.25);
-	transition: 0.25s background ease;
-	width: 400px;
+	position: relative;
+	display: inline-block;
 
-	&:focus {
-		outline: none;
-		background: rgba(255, 255, 255, 0.5);
+	input {
+		@extend %typeface-body-italic;
+		color: white;
+		border: none;
+		font-size: 3em;
+		height: 1.5em;
+		padding: 0 0.25em;
+		margin-left: 0.25em;
+		background: rgba(255, 255, 255, 0.25);
+		transition: 0.25s background ease;
+		width: 400px;
+
+		&:focus {
+			outline: none;
+			background: rgba(255, 255, 255, 0.5);
+		}
 	}
+
+}
+
+.search__spinner {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 50px;
+	height: 100%;
 }
 
 // ----------------------------------------------------------------------------

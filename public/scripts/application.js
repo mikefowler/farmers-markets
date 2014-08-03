@@ -7,6 +7,7 @@
     'ngResource',
     'ngAnimate',
     'google-maps',
+    'angularSpinner',
     'markets.controllers',
     'markets.resources'
   ]);

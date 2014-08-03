@@ -3,13 +3,11 @@
   font-weight: 800;
   text-transform: uppercase; }
 
-.search__prefix,
-.search__input, body {
+.search__prefix, .search__input input, body {
   font-family: 'Gentium Book Basic', serif;
   font-weight: 400; }
 
-.search__prefix,
-.search__input {
+.search__prefix, .search__input input {
   font-style: italic; }
 
 .search__label {
@@ -46,28 +44,36 @@ body {
   font-size: 3em;
   margin: 0.25em 0; }
 
-.search__prefix,
-.search__input {
+.search__prefix {
   height: 1em;
   width: 100%;
   line-height: 1.2;
-  font-size: 3em; }
-
-.search__prefix {
+  font-size: 3em;
   text-transform: lowercase; }
 
 .search__input {
-  background: none;
-  color: white;
-  border: none;
-  padding: 0.75em 0.25em;
-  margin: 0 0.25em;
-  background: rgba(255, 255, 255, 0.25);
-  transition: 0.25s background ease;
-  width: 400px; }
-  .search__input:focus {
-    outline: none;
-    background: rgba(255, 255, 255, 0.5); }
+  position: relative;
+  display: inline-block; }
+  .search__input input {
+    color: white;
+    border: none;
+    font-size: 3em;
+    height: 1.5em;
+    padding: 0 0.25em;
+    margin-left: 0.25em;
+    background: rgba(255, 255, 255, 0.25);
+    transition: 0.25s background ease;
+    width: 400px; }
+    .search__input input:focus {
+      outline: none;
+      background: rgba(255, 255, 255, 0.5); }
+
+.search__spinner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 100%; }
 
 .search-overlay {
   background: rgba(0, 0, 0, 0.5);
